@@ -11,6 +11,8 @@ cd goblog
 
 cp .env.example .env
 
-go run main.go
+go build main.go
+
+nohup ./main >/tmp/goblog.log 2>&1 &
 ```
 
