@@ -2,6 +2,7 @@ package view
 
 import (
 	"github.com/attitudefx7/goblog/app/models/category"
+	"github.com/attitudefx7/goblog/app/models/user"
 	"github.com/attitudefx7/goblog/pkg/auth"
 	"github.com/attitudefx7/goblog/pkg/flash"
 	"github.com/attitudefx7/goblog/pkg/logger"
@@ -33,6 +34,7 @@ func RenderTemplate(w io.Writer, name string, data D, tplFiles ...string) {
 	data["loginUser"] = auth.User
 	data["flash"] = flash.All()
 	data["Categories"], err = category.All()
+	data["Users"], err = user.All()
 
 	// 2. 生成模板文件
 	allFiles := getTemplateFiles(tplFiles...)

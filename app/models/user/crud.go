@@ -34,3 +34,13 @@ func GetByEmail(email string) (User, error) {
 
 	return user, nil
 }
+
+func All() ([]User, error) {
+	var users []User
+	if err := model.DB.Find(&users).Order("created_at desc").Error; err != nil {
+		logger.LogError(err)
+		return users, err
+	}
+
+	return users, nil
+}
